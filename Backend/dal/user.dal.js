@@ -1,12 +1,12 @@
 const User = require("./connection").db("userDB").collection("userdata");
 
 //object id access to the document based on the _id
-const ObjectID = require('mongodb').objectId;
+const ObjectID = require('mongodb').ObjectId;
 
 //create
  const createuser = async ({name,email,password,userRole}) => {
     const result = await User.insertOne({name,email,password,userRole});
-    return result;
+    return result.ops[0];
  }
 
 //get all 
@@ -36,4 +36,25 @@ const login = async ({email,password})=> {
     }
 }
 
-module.exports = {createuser,getAllUsers,login}
+//get one user data
+const getUserDataByID = async (id)=> {
+    const user = await User.findOne({_id:ObjectID(id)});
+    return {data:user,msg:"get success"}
+}
+
+//update user
+const edituser =  async (id,{name,email,password,userRole}) => {
+    const result = await User.replaceOne({_id:ObjectID(id)},{name,email,password,userRole});
+
+    return {data:result , msg:"update success"};
+}
+
+//delete user
+const deleteuser = async (id)=>{
+    console.log(id);
+    const result = await User.deleteOne({_id:ObjectID(id)});
+    return {data:result,msg:"delete success"};
+
+}
+
+module.exports = {createuser,getAllUsers,login,edituser,deleteuser,getUserDataByID}

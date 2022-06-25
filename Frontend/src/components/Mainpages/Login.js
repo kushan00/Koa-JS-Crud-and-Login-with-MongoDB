@@ -70,6 +70,9 @@ const Login = () => {
 
                     </form>
                 </div>
+                <br/>
+                <h4>Don't Have an account? Register Below</h4>
+                <a href="/register" className="btn btn-primary">Register</a>
             </center>
             </div>
         </div>

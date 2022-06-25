@@ -19,7 +19,8 @@ const Navbar = () => {
     const handleSubmit = () => {
 		localStorage.removeItem("token");
 		localStorage.removeItem("userRole");
-		window.location.reload();
+		navigate("/");
+    window.location.reload();
 	  }
 
     return(

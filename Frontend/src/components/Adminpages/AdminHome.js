@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import { getAllUsers } from "../../../services/userServices";
+import { getAllUsers , deleteUser } from "../../../services/userServices";
 
 const AdminHome = () =>{
 
@@ -19,6 +19,21 @@ const AdminHome = () =>{
         getall();
     }, [])
 
+    const deleteData = async (e,id)=>{
+      e.preventDefault();  
+      try {
+            const data = await deleteUser(id);
+            console.log("data",data);
+            if(data?.data.msg === "delete success")
+            {
+              alert("delete success");
+              window.location.reload();
+            }
+        } catch (error) {
+          console.log(error);
+        }
+    }
+
     return(
         <div>
             <center>
@@ -26,7 +41,9 @@ const AdminHome = () =>{
                 <h1>Admin Home page</h1>
             </div>
             </center>
-
+            <div>
+              <a href="/add-new-user" className="btn btn-success">Add New User</a>
+            </div>
             <br></br>
       <table className="table table-dark">
         <thead className="">
@@ -51,7 +68,7 @@ const AdminHome = () =>{
                     <td>
                       <a
                         className="btn btn-warning"
-                        href={`/user/${user._id}`}
+                        href={`/user-update/${user._id}`}
                       >
                         Update
                       </a>
@@ -59,8 +76,8 @@ const AdminHome = () =>{
                     <td>
                       <button
                         className="btn btn-danger"
-                        onClick={() => {
-                         // deleteProduct(user._id);
+                        onClick={(e) => {
+                           deleteData(e,user._id);
                         }}
                       >
                         delete

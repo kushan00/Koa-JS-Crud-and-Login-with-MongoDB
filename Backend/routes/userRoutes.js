@@ -1,6 +1,5 @@
 const Router = require("koa-router");
-const koaBody = require("koa-body");
-const {createNewUser,getAll,loginuser} = require("../api/user.api");
+const {createNewUser,getAll,loginuser,updateUser,deleteUser,getUserByID} = require("../api/user.api");
 
 //prefix
 const router = new Router({
@@ -33,6 +32,36 @@ router.post("/login",async (ctx) => {
     ctx.body = logged;
 
 
+})
+
+
+router.put("/update-user/:id",async (ctx)=>{
+    const id = ctx.params.id;
+    const data = ctx.request.body;
+
+    var user = await updateUser(id,data);
+
+    ctx.response.status = 200;
+    ctx.body = user;
+
+})
+
+router.delete("/delete-user/:id",async (ctx)=>{
+    const id = ctx.params.id;
+
+    var data = await deleteUser(id);
+
+    ctx.response.status = 200;
+    ctx.body = data;
+})
+
+router.get("/get-by-id/:id",async (ctx)=>{
+    const id = ctx.params.id;
+
+    var data = await getUserByID(id);
+
+    ctx.response.status = 200;
+    ctx.body = data
 })
 
 module.exports = router;
