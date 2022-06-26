@@ -9,6 +9,8 @@ import StudentHome from "./components/Studentpages/StudentHome";
 import EditUser from "./components/Adminpages/EditUser";
 import AddNewUser from "./components/Adminpages/AddNewUser";
 import Register from "./components/Mainpages/Register";
+import UpdateSelectedSubject from "./components/Studentpages/UpdateSubject";
+import AddNewSubject from "./components/Studentpages/AddNewSubject";
 
  const App = ()=>{
 
@@ -29,6 +31,8 @@ import Register from "./components/Mainpages/Register";
                     <Route path="/student-pages" element={<StudentHome/>}/>
                     <Route path="/user-update/:id" element={<EditUser/>}/>
                     <Route path="/add-new-user" element={<AddNewUser/>}/>
+                    <Route path="/subject-update/:id" element={<UpdateSelectedSubject/>}/>
+                    <Route path="/add-new-subject" element={<AddNewSubject/>}/>
                 </Routes> 
             </Router>
         </div>

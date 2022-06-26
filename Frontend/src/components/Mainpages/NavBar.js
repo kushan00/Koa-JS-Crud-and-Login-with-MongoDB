@@ -34,7 +34,7 @@ const Navbar = () => {
 
                 <a style={{ display: userRole == "admin" ? "flex" : "none" , textDecoration:"none"}} className="sidebarListItem" aria-current="page" href="/admin-pages">Admin Pages</a>
                 
-                <a style={{ display: userRole == "student" ? "flex" : "none" , textDecoration:"none"}} className="sidebarListItem" href="/atudent-pages" aria-current="page">Student Pages</a>
+                <a style={{ display: userRole == "student" ? "flex" : "none" , textDecoration:"none"}} className="sidebarListItem" href="/student-pages" aria-current="page">Student Pages</a>
 
 
 
