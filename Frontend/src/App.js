@@ -11,6 +11,8 @@ import AddNewUser from "./components/Adminpages/AddNewUser";
 import Register from "./components/Mainpages/Register";
 import UpdateSelectedSubject from "./components/Studentpages/UpdateSubject";
 import AddNewSubject from "./components/Studentpages/AddNewSubject";
+import AllRegs from "./components/Studentpages/AllRegs";
+import EnrollSUbject from "./components/Studentpages/EnrollSUbject";
 
  const App = ()=>{
 
@@ -33,6 +35,8 @@ import AddNewSubject from "./components/Studentpages/AddNewSubject";
                     <Route path="/add-new-user" element={<AddNewUser/>}/>
                     <Route path="/subject-update/:id" element={<UpdateSelectedSubject/>}/>
                     <Route path="/add-new-subject" element={<AddNewSubject/>}/>
+                    <Route path="/reg-sub" element={<AllRegs/>}/>
+                    <Route path="/reg-new-subject" element={<EnrollSUbject/>}/>
                 </Routes> 
             </Router>
         </div>
