@@ -2,15 +2,14 @@ const Koa = require("koa");
 const bodyparser = require("koa-bodyparser");
 const cors = require("@koa/cors");
 
-
 const PORT = 5000;
 
 const app = new Koa();
 
-
 //import routes
 const UserRoutes = require('./Routes/userRoutes');
 const SubjectRoutes = require("./routes/subjectRoutes");
+const RegRouter = require("./routes/RegSubjectsRoutes");
 const { allowedMethods } = require("./routes/subjectRoutes");
 
 //middlewares
@@ -20,14 +19,15 @@ app.use(cors({
 ));
 app.use(bodyparser());
 
-
-
 //use routes
 app.use(UserRoutes.routes());
 app.use(UserRoutes.allowedMethods());
 
 app.use(SubjectRoutes.routes());
 app.use(SubjectRoutes.allowedMethods());
+
+app.use(RegRouter.routes());
+app.use(RegRouter.allowedMethods());
 
 app.use(ctx=>{
     ctx.body = "Koa server is running";
